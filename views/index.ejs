@@ -16,12 +16,12 @@
                 <button class="fa-solid fa-magnifying-glass" formaction="/weather" method="post"></button>
             </form>
         </div>
-
+        <% if (locals.error) { %>
         <div class="not-found">
             <img src="images/page-not-found.jpg" alt="Location not found">
             <p>Oops! Location not found. Try again.</p>
         </div>
-
+        <% } %>
         <div class="weather-box">
 
             <% if (locals.temperature) { %>
