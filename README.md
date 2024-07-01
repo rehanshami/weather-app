@@ -13,6 +13,8 @@ This project uses REST API Tech Stack
 - EJS
 - API from openweathermap.org
 
+Go to live site: https://weather-app-1xa9.onrender.com/
+
 ## Getting started
 
 ### Prerequisites
