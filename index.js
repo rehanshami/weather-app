@@ -2,18 +2,22 @@ import express from "express";
 import axios from "axios";
 import ejs from "ejs";
 import bodyParser from "body-parser";
+import * as dotenv from "dotenv";
 
+dotenv.config();
+
+console.log(process.env);
 const app = express();
 
 const port = 3000;
-const API_key = "62e1453b6486773559e7c89e3dcc4fec";
+const API_key = process.env.API_KEY;
 const API_URL =  "https://api.openweathermap.org/data/2.5/weather?q=";
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+    res.render("index.ejs", {containerHeight: "initial-height"});
 })
 
 app.post("/weather", async (req, res) => {
@@ -28,11 +32,13 @@ app.post("/weather", async (req, res) => {
         const wind = response.data.wind.speed;
         const icon = response.data.weather[0].icon;
         const location = response.data.name;
+        const containerHeight= "full-height";
     
         console.log(temperature)
-        res.render("index.ejs", {icon: icon, location: location, temperature: temperature, description: description, humidity: humidity, wind: wind})
+        res.render("index.ejs", {containerHeight: containerHeight, icon: icon, location: location, temperature: temperature, description: description, humidity: humidity, wind: wind})
     } catch (error) {
-        res.render("index.ejs", {error: "City not found"});
+        const containerHeight= "full-height";
+        res.render("index.ejs", {containerHeight: containerHeight, error: "City not found"});
     }
 
 

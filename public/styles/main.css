@@ -16,6 +16,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem 2rem;
+    color: #06283D;
+}
+
+form {
+    display: flex;
+    align-items: center;
 }
 
 .container {
@@ -173,14 +180,12 @@ body {
     opacity: 0; */
 }
 
-.fade-in {
-    animation: 0.5s fadeIn forwards;
-    animation-delay: 0.5s;
+
+
+.initial-height {
+    height: 120px;
 }
 
-@keyframes fadeIn {
-    to {
-        scale: 1;
-        opacity: 1;
-    }
+.full-height {
+    height: 620px;
 }

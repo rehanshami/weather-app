@@ -8,11 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="container <%=containerHeight%>">
         <div class="search-box">
             <form action="/weather" method="POST">
                 <i class="fa-solid fa-location-dot"></i>
-                <input type="text" class="search" name="location" placeholder="Enter a location">
+                <input type="text" class="search" name="location" placeholder="Enter a city">
                 <button class="fa-solid fa-magnifying-glass" formaction="/weather" method="post"></button>
             </form>
         </div>
@@ -22,16 +22,14 @@
             <p>Oops! Location not found. Try again.</p>
         </div>
         <% } %>
+
+        <% if (locals.temperature) { %>
         <div class="weather-box">
-
-            <% if (locals.temperature) { %>
                 <h1><%=location%></h1>
-                <img src="https://openweathermap.org/img/wn/<%=icon%>@4x.png">
-                <p class="temperature"><%= temperature %>°C</p>
+                <img src="https://openweathermap.org/img/wn/<%=icon%>@2x.png">
+                <p class="temperature"><%= temperature %><span>°C</span></p>
                 <p class="description"><%= description %></p>
-                <% } %>
         </div>
-
         <div class="weather-details">
             <div class="humidity">
                 <i class="fa-solid fa-water"></i>
@@ -42,7 +40,6 @@
                     <p>Humidity</p>
                 </div>
             </div>
-
             <div class="wind">
                 <i class="fa-solid fa-wind"></i>
                 <div class="text">
@@ -52,9 +49,8 @@
                     <p>Wind speed</p>
                 </div>
             </div>
-
-
         </div>
+        <% } %>
     </div>
     <script src="https://kit.fontawesome.com/e30790710b.js" crossorigin="anonymous"></script>
 </body>
